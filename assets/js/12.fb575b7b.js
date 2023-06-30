@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{327:function(t,e,s){"use strict";s.r(e);var n=s(7),r=Object(n.a)({},(function(){var t=this._self._c;return t("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[t("embed",{attrs:{src:"/pdf/resume.pdf",width:"700",height:"1200",type:"application/pdf"}})])}),[],!1,null,null,null);e.default=r.exports}}]);
