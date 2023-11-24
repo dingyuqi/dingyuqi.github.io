@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开闭原则 | Alex Ding&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/icon.ico">
+    <link rel="stylesheet" href="/styles/vue-dark.css">
+    <meta name="description" content="一个深圳计算科学研究院的程序员">
+    
+    <link rel="preload" href="/assets/css/0.styles.606a355e.css" as="style"><link rel="preload" href="/assets/js/app.d18bff1c.js" as="script"><link rel="preload" href="/assets/js/2.6b12cf41.js" as="script"><link rel="preload" href="/assets/js/31.3c6f8d9f.js" as="script"><link rel="prefetch" href="/assets/js/10.afe27500.js"><link rel="prefetch" href="/assets/js/11.c473472f.js"><link rel="prefetch" href="/assets/js/12.3723b118.js"><link rel="prefetch" href="/assets/js/13.dab62b78.js"><link rel="prefetch" href="/assets/js/14.595c26c0.js"><link rel="prefetch" href="/assets/js/15.eb5659ac.js"><link rel="prefetch" href="/assets/js/16.5aa5c8a7.js"><link rel="prefetch" href="/assets/js/17.09cf58a1.js"><link rel="prefetch" href="/assets/js/18.b542df01.js"><link rel="prefetch" href="/assets/js/19.934c6bb4.js"><link rel="prefetch" href="/assets/js/20.3a94ae86.js"><link rel="prefetch" href="/assets/js/21.e204184a.js"><link rel="prefetch" href="/assets/js/22.4b9dfd7e.js"><link rel="prefetch" href="/assets/js/23.d27d5bd5.js"><link rel="prefetch" href="/assets/js/24.1769ad57.js"><link rel="prefetch" href="/assets/js/25.d189183e.js"><link rel="prefetch" href="/assets/js/26.d6d0308b.js"><link rel="prefetch" href="/assets/js/27.5fd912e3.js"><link rel="prefetch" href="/assets/js/28.b1eacfe1.js"><link rel="prefetch" href="/assets/js/29.53ffb36c.js"><link rel="prefetch" href="/assets/js/3.c9070c9e.js"><link rel="prefetch" href="/assets/js/30.146aa612.js"><link rel="prefetch" href="/assets/js/32.7d8ed96d.js"><link rel="prefetch" href="/assets/js/33.f07bc390.js"><link rel="prefetch" href="/assets/js/34.3920c11f.js"><link rel="prefetch" href="/assets/js/35.fb4476ae.js"><link rel="prefetch" href="/assets/js/36.edb9da37.js"><link rel="prefetch" href="/assets/js/37.60a0b581.js"><link rel="prefetch" href="/assets/js/38.81a6c96a.js"><link rel="prefetch" href="/assets/js/39.250e52bd.js"><link rel="prefetch" href="/assets/js/4.7d84895d.js"><link rel="prefetch" href="/assets/js/40.291dcf46.js"><link rel="prefetch" href="/assets/js/41.9de7198c.js"><link rel="prefetch" href="/assets/js/5.9b78239c.js"><link rel="prefetch" href="/assets/js/6.3ecdc8e7.js"><link rel="prefetch" href="/assets/js/7.3564a79f.js"><link rel="prefetch" href="/assets/js/8.16014aee.js"><link rel="prefetch" href="/assets/js/9.4cc53e9b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.606a355e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Alex Ding's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Blog" class="dropdown-title"><!----> <span class="title" style="display:;">Blog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/paper/" class="nav-link">图算法论文</a></li><li class="dropdown-item"><!----> <a href="/database/" class="nav-link">数据库</a></li><li class="dropdown-item"><!----> <a href="/model/" class="nav-link">模型</a></li><li class="dropdown-item"><!----> <a href="/deploy/" class="nav-link">部署相关</a></li><li class="dropdown-item"><!----> <a href="/design_mode/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><a href="/aboutme/" class="nav-link">AboutMe</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/avatar.jpg"> <div class="blogger-info"><h3>Alex Ding</h3> <span>dingyuqi2023@gmail.com</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Blog" class="dropdown-title"><!----> <span class="title" style="display:;">Blog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/paper/" class="nav-link">图算法论文</a></li><li class="dropdown-item"><!----> <a href="/database/" class="nav-link">数据库</a></li><li class="dropdown-item"><!----> <a href="/model/" class="nav-link">模型</a></li><li class="dropdown-item"><!----> <a href="/deploy/" class="nav-link">部署相关</a></li><li class="dropdown-item"><!----> <a href="/design_mode/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><a href="/aboutme/" class="nav-link">AboutMe</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/ef744f/" class="sidebar-link">依赖倒置原则</a></li><li><a href="/pages/eca7cb/" class="sidebar-link">单一职责原则</a></li><li><a href="/pages/9f0044/" class="sidebar-link">迪米特法则</a></li><li><a href="/pages/1f7bb4/" class="sidebar-link">接口隔离原则</a></li><li><a href="/pages/c3f570/" class="sidebar-link">里氏替换原则</a></li><li><a href="/pages/060206/" aria-current="page" class="active sidebar-link">开闭原则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/060206/#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header level2"><a href="/pages/060206/#作用" class="sidebar-link">作用</a></li><li class="sidebar-sub-header level2"><a href="/pages/060206/#实现方法" class="sidebar-link">实现方法</a></li><li class="sidebar-sub-header level2"><a href="/pages/060206/#示例" class="sidebar-link">示例</a></li><li class="sidebar-sub-header level2"><a href="/pages/060206/#ige项目中的例子" class="sidebar-link">ige项目中的例子：</a></li></ul></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/categories/?category=design_mode" title="分类" data-v-06225672>design_mode</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="javascript:;" data-v-06225672>Alex Ding dingyuqi2023@gmail.com</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-07-11</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><!---->开闭原则<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h1 id="开闭原则"><a href="#开闭原则" class="header-anchor">#</a> 开闭原则</h1> <h2 id="定义"><a href="#定义" class="header-anchor">#</a> 定义</h2> <p>原始定义：Software entities (classes, modules, functions) should be open for extension but closed for modification。</p> <ul><li>对扩展开放，意味着有新的需求或变化时，可以对现有代码进行扩展，以适应新的情况。</li> <li>对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对已有代码进行任何修改。</li></ul> <h2 id="作用"><a href="#作用" class="header-anchor">#</a> 作用</h2> <p>开闭原则是面向对象程序设计的终极目标，它使软件实体拥有一定的适应性和灵活性的同时具备稳定性和延续性。具体来说，其作用如下。</p> <ol><li><p><strong>对软件测试的影响</strong>：软件遵守开闭原则的话，软件测试时只需要对扩展的代码进行测试就可以了，因为原有的测试代码仍然能够正常运行。</p></li> <li><p><strong>可以提高代码的可复用性</strong>：粒度越小，被复用的可能性就越大；在面向对象的程序设计中，根据原子和抽象编程可以提高代码的可复用性。</p></li> <li><p><strong>可以提高软件的可维护性</strong>：遵守开闭原则的软件，其稳定性高和延续性强，从而易于扩展和维护。</p></li></ol> <h2 id="实现方法"><a href="#实现方法" class="header-anchor">#</a> 实现方法</h2> <p>可以通过“抽象约束、封装变化”来实现开闭原则，即通过接口或者抽象类为软件实体定义一个相对稳定的抽象层，而将相同的可变因素封装在相同的具体实现类中。</p> <p>​因为抽象灵活性好，适应性广，只要抽象的合理，可以基本保持软件架构的稳定。而软件中易变的细节可以从抽象派生来的实现类来进行扩展，当软件需要发生变化时，只需要根据需求重新派生一个实现类来扩展就可以了。</p> <p>建议：用抽象基类与多态的使用来遵循开闭原则以提高扩展性与可重用性
+例子：面对新需求，我们的选择：实现类（单独实现新需求），修改原类（改getPrice功能函数、新增getOffPrice功能函数）。推荐的方法是：增加一个子类OffNovelBook，覆写getPrice方法。</p> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <h3 id="反例-一个扩展性不足的电影搜索功能"><a href="#反例-一个扩展性不足的电影搜索功能" class="header-anchor">#</a> 反例：一个扩展性不足的电影搜索功能</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">class</span> <span class="token class-name">Movie</span><span class="token punctuation">:</span>
+    <span class="token comment"># Setting up attributes</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> genre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>genre <span class="token operator">=</span> genre
+
+
+<span class="token keyword">class</span> <span class="token class-name">MovieBrowser</span><span class="token punctuation">:</span>
+    <span class="token comment"># Movie filter by Name</span>
+    <span class="token keyword">def</span> <span class="token function">search_movie_by_name</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movies<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>movie <span class="token keyword">for</span> movie <span class="token keyword">in</span> movies <span class="token keyword">if</span> movie<span class="token punctuation">.</span>name <span class="token operator">==</span> name<span class="token punctuation">]</span>
+
+    <span class="token comment"># Movie filter by Genre</span>
+    <span class="token keyword">def</span> <span class="token function">search_movie_by_genre</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movies<span class="token punctuation">,</span> genre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>movie <span class="token keyword">for</span> movie <span class="token keyword">in</span> movies <span class="token keyword">if</span> movie<span class="token punctuation">.</span>genre <span class="token operator">==</span> genre<span class="token punctuation">]</span>
+
+</code></pre></div><h3 id="正例-多态-抽象类"><a href="#正例-多态-抽象类" class="header-anchor">#</a> 正例：多态+抽象类</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> abc <span class="token keyword">import</span> ABC<span class="token punctuation">,</span> abstractmethod
+
+
+<span class="token keyword">class</span> <span class="token class-name">Movie</span><span class="token punctuation">:</span>
+    <span class="token comment"># Setting up attributes</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> genre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>genre <span class="token operator">=</span> genre
+
+
+<span class="token comment"># Abstract base class 定义抽象基类，以@abc.abstractmethod装饰器将它们装饰为抽象方法</span>
+<span class="token keyword">class</span> <span class="token class-name">SearchBy</span><span class="token punctuation">(</span>ABC<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@abstractmethod</span>
+    <span class="token keyword">def</span> <span class="token function">is_matched</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token comment"># Overloaded and operator</span>
+    <span class="token keyword">def</span> <span class="token function">__and__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> AndSearchBy<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
+
+
+<span class="token comment"># Inheriting SearchBy and Filter on Genre(流派)</span>
+<span class="token keyword">class</span> <span class="token class-name">SearchByGenre</span><span class="token punctuation">(</span>SearchBy<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> genre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>genre <span class="token operator">=</span> genre
+
+    <span class="token keyword">def</span> <span class="token function">is_matched</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> movie<span class="token punctuation">.</span>genre <span class="token operator">==</span> self<span class="token punctuation">.</span>genre
+
+
+<span class="token comment"># Inheriting SearchBy and Filter on Name</span>
+<span class="token keyword">class</span> <span class="token class-name">SearchByName</span><span class="token punctuation">(</span>SearchBy<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+
+    <span class="token keyword">def</span> <span class="token function">is_matched</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> movie<span class="token punctuation">.</span>name <span class="token operator">==</span> self<span class="token punctuation">.</span>name
+
+
+<span class="token comment"># Added AndSearchBy method without altering existing classes</span>
+<span class="token keyword">class</span> <span class="token class-name">AndSearchBy</span><span class="token punctuation">(</span>SearchBy<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> release_date<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>release_date <span class="token operator">=</span> release_date
+
+    <span class="token keyword">def</span> <span class="token function">is_matched</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>name<span class="token punctuation">.</span>is_matched<span class="token punctuation">(</span>movie<span class="token punctuation">)</span> <span class="token keyword">and</span> self<span class="token punctuation">.</span>release_date<span class="token punctuation">.</span>is_matched<span class="token punctuation">(</span>movie<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">MovieBrowser</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">search</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> movies<span class="token punctuation">,</span> searchby<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>movie <span class="token keyword">for</span> movie <span class="token keyword">in</span> movies <span class="token keyword">if</span> searchby<span class="token punctuation">.</span>is_matched<span class="token punctuation">(</span>movie<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+</code></pre></div><h2 id="ige项目中的例子"><a href="#ige项目中的例子" class="header-anchor">#</a> ige项目中的例子：</h2> <p>正面的例子：不同数据库的适配（dbdrive）</p> <p>反面的例子：编解码(解码服务、规则解码)</p> <p><br><br><br><br> <!----></p></div></div> <!----> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="标签">#设计模式</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/c3f570/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">里氏替换原则</div></a> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/c3f570/" class="prev">里氏替换原则</a></span> <!----></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:dingyuqi2023@gmail.com" title="e-mail" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/dingyuqi" title="github" target="_blank" class="iconfont icon-github"></a><a href="https://blog.csdn.net/weixin_42236936?type=blog" title="csdn" target="_blank" class="iconfont icon-csdn"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>@dingyuqi</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d18bff1c.js" defer></script><script src="/assets/js/2.6b12cf41.js" defer></script><script src="/assets/js/31.3c6f8d9f.js" defer></script>
+  </body>
+</html>

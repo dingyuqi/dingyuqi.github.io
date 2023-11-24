@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>迪米特法则 | Alex Ding&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/icon.ico">
+    <link rel="stylesheet" href="/styles/vue-dark.css">
+    <meta name="description" content="一个深圳计算科学研究院的程序员">
+    
+    <link rel="preload" href="/assets/css/0.styles.606a355e.css" as="style"><link rel="preload" href="/assets/js/app.d18bff1c.js" as="script"><link rel="preload" href="/assets/js/2.6b12cf41.js" as="script"><link rel="preload" href="/assets/js/28.b1eacfe1.js" as="script"><link rel="prefetch" href="/assets/js/10.afe27500.js"><link rel="prefetch" href="/assets/js/11.c473472f.js"><link rel="prefetch" href="/assets/js/12.3723b118.js"><link rel="prefetch" href="/assets/js/13.dab62b78.js"><link rel="prefetch" href="/assets/js/14.595c26c0.js"><link rel="prefetch" href="/assets/js/15.eb5659ac.js"><link rel="prefetch" href="/assets/js/16.5aa5c8a7.js"><link rel="prefetch" href="/assets/js/17.09cf58a1.js"><link rel="prefetch" href="/assets/js/18.b542df01.js"><link rel="prefetch" href="/assets/js/19.934c6bb4.js"><link rel="prefetch" href="/assets/js/20.3a94ae86.js"><link rel="prefetch" href="/assets/js/21.e204184a.js"><link rel="prefetch" href="/assets/js/22.4b9dfd7e.js"><link rel="prefetch" href="/assets/js/23.d27d5bd5.js"><link rel="prefetch" href="/assets/js/24.1769ad57.js"><link rel="prefetch" href="/assets/js/25.d189183e.js"><link rel="prefetch" href="/assets/js/26.d6d0308b.js"><link rel="prefetch" href="/assets/js/27.5fd912e3.js"><link rel="prefetch" href="/assets/js/29.53ffb36c.js"><link rel="prefetch" href="/assets/js/3.c9070c9e.js"><link rel="prefetch" href="/assets/js/30.146aa612.js"><link rel="prefetch" href="/assets/js/31.3c6f8d9f.js"><link rel="prefetch" href="/assets/js/32.7d8ed96d.js"><link rel="prefetch" href="/assets/js/33.f07bc390.js"><link rel="prefetch" href="/assets/js/34.3920c11f.js"><link rel="prefetch" href="/assets/js/35.fb4476ae.js"><link rel="prefetch" href="/assets/js/36.edb9da37.js"><link rel="prefetch" href="/assets/js/37.60a0b581.js"><link rel="prefetch" href="/assets/js/38.81a6c96a.js"><link rel="prefetch" href="/assets/js/39.250e52bd.js"><link rel="prefetch" href="/assets/js/4.7d84895d.js"><link rel="prefetch" href="/assets/js/40.291dcf46.js"><link rel="prefetch" href="/assets/js/41.9de7198c.js"><link rel="prefetch" href="/assets/js/5.9b78239c.js"><link rel="prefetch" href="/assets/js/6.3ecdc8e7.js"><link rel="prefetch" href="/assets/js/7.3564a79f.js"><link rel="prefetch" href="/assets/js/8.16014aee.js"><link rel="prefetch" href="/assets/js/9.4cc53e9b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.606a355e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Alex Ding's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Blog" class="dropdown-title"><!----> <span class="title" style="display:;">Blog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/paper/" class="nav-link">图算法论文</a></li><li class="dropdown-item"><!----> <a href="/database/" class="nav-link">数据库</a></li><li class="dropdown-item"><!----> <a href="/model/" class="nav-link">模型</a></li><li class="dropdown-item"><!----> <a href="/deploy/" class="nav-link">部署相关</a></li><li class="dropdown-item"><!----> <a href="/design_mode/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><a href="/aboutme/" class="nav-link">AboutMe</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/avatar.jpg"> <div class="blogger-info"><h3>Alex Ding</h3> <span>dingyuqi2023@gmail.com</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Blog" class="dropdown-title"><!----> <span class="title" style="display:;">Blog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/paper/" class="nav-link">图算法论文</a></li><li class="dropdown-item"><!----> <a href="/database/" class="nav-link">数据库</a></li><li class="dropdown-item"><!----> <a href="/model/" class="nav-link">模型</a></li><li class="dropdown-item"><!----> <a href="/deploy/" class="nav-link">部署相关</a></li><li class="dropdown-item"><!----> <a href="/design_mode/" class="nav-link">设计模式</a></li></ul></div></div><div class="nav-item"><a href="/aboutme/" class="nav-link">AboutMe</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/pages/ef744f/" class="sidebar-link">依赖倒置原则</a></li><li><a href="/pages/eca7cb/" class="sidebar-link">单一职责原则</a></li><li><a href="/pages/9f0044/" aria-current="page" class="active sidebar-link">迪米特法则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/9f0044/#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header level2"><a href="/pages/9f0044/#为什么要用迪米特原则" class="sidebar-link">为什么要用迪米特原则</a></li><li class="sidebar-sub-header level2"><a href="/pages/9f0044/#实现方法" class="sidebar-link">实现方法</a></li><li class="sidebar-sub-header level2"><a href="/pages/9f0044/#例子" class="sidebar-link">例子</a></li><li class="sidebar-sub-header level2"><a href="/pages/9f0044/#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/pages/1f7bb4/" class="sidebar-link">接口隔离原则</a></li><li><a href="/pages/c3f570/" class="sidebar-link">里氏替换原则</a></li><li><a href="/pages/060206/" class="sidebar-link">开闭原则</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/categories/?category=design_mode" title="分类" data-v-06225672>design_mode</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="javascript:;" data-v-06225672>Alex Ding dingyuqi2023@gmail.com</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-04-14</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><!---->迪米特法则<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h1 id="迪米特法则"><a href="#迪米特法则" class="header-anchor">#</a> 迪米特法则</h1> <h2 id="定义"><a href="#定义" class="header-anchor">#</a> 定义</h2> <p>迪米特法则(Law of Demeter，LoD)又叫作最少知识原则(Least Knowledge Principle，LKP)</p> <p>定义：只与你的直接朋友交谈，不跟“陌生人”说话(Talk only to your immediate friends and not to strangers)</p> <p>含义：如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。</p> <p>迪米特法则中的“朋友”是指：出现在成员变量、方法的输入输出参数中的类就是直接的朋友</p> <h2 id="为什么要用迪米特原则"><a href="#为什么要用迪米特原则" class="header-anchor">#</a> 为什么要用迪米特原则</h2> <p>类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p> <h3 id="优点"><a href="#优点" class="header-anchor">#</a> 优点</h3> <p>降低了类之间的耦合度，提高了模块的相对独立性。</p> <p>由于亲合度降低，从而提高了类的可复用率和系统的扩展性。</p> <h3 id="缺点"><a href="#缺点" class="header-anchor">#</a> 缺点</h3> <p>系统中存在大量的中介类，增加了系统的复杂度</p> <h2 id="实现方法"><a href="#实现方法" class="header-anchor">#</a> 实现方法</h2> <ol><li><p>在类的划分上，应该创建弱耦合的类。类与类之间的耦合越弱，就越有利于实现可复用的目标。</p></li> <li><p>在类的结构设计上，尽量降低类成员的访问权限。</p></li> <li><p>在类的设计上，优先考虑将一个类设置成不变类。</p></li> <li><p>在对其他类的引用上，将引用其他对象的次数降到最低。</p></li> <li><p>不暴露类的属性成员，而应该提供相应的访问器（set 和 get 方法）。</p></li> <li><p>谨慎使用序列化（Serializable）功能。</p> <p>需要使用序列化的场景：在当前程序之外保存对象并在需要的时候重新获获取对象</p> <p>违背迪米特法则的地方：序列化不必要地暴露了内部的实现 + 容易使得一个类对其最初的内部表示产生依赖</p></li></ol> <h2 id="例子"><a href="#例子" class="header-anchor">#</a> 例子</h2> <ol><li><p>明星-经纪人
+<img src="/screen_shot/image2022-4-14_9-54-6.png" alt="image2022-4-14_9-54-6"></p></li> <li><p>客户-送奶工
+场景：送奶工把“鲜奶”送到客户的家里，并且从客户手中得到相应的“报酬”</p></li></ol> <p><strong>客户</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+public <span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token punctuation">{</span>
+    private String name<span class="token punctuation">;</span><span class="token operator">//</span>客户姓名
+    private Wallet Wallet<span class="token punctuation">;</span><span class="token operator">//</span>客户的钱包
+ 
+    public Customer<span class="token punctuation">(</span>String name<span class="token punctuation">,</span> test<span class="token punctuation">.</span>Wallet wallet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        this<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        Wallet <span class="token operator">=</span> wallet<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    public Wallet getWallet<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Wallet<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>钱包</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">Wallet</span> <span class="token punctuation">{</span>
+    private <span class="token builtin">float</span> value<span class="token punctuation">;</span><span class="token operator">//</span>钱包内的价值
+ 
+    public Wallet<span class="token punctuation">(</span><span class="token builtin">float</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        this<span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> @<span class="token keyword">return</span> 返回当前钱包内的总额
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public <span class="token builtin">float</span> getTotalMoney<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> @param deposit 向钱包中加入的金额数量
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public void addMoney<span class="token punctuation">(</span><span class="token builtin">float</span> deposit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">+=</span> deposit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> @param debit 需要从钱包中扣除的金额数量
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public void subtractMoney<span class="token punctuation">(</span><span class="token builtin">float</span> debit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">-=</span> debit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>送奶工</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">MilkMan</span> <span class="token punctuation">{</span>
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> 送奶工执行“交易”
+     <span class="token operator">*</span>
+     <span class="token operator">*</span> @param payment  送奶工应收取的费用
+     <span class="token operator">*</span> @param customer 被收取费用的客户对象
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public void makeDeal<span class="token punctuation">(</span><span class="token builtin">float</span> payment<span class="token punctuation">,</span> Customer customer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Wallet wallet <span class="token operator">=</span> customer<span class="token punctuation">.</span>getWallet<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>获取客户的钱包
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>wallet<span class="token punctuation">.</span>getTotalMoney<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> payment<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            wallet<span class="token punctuation">.</span>subtractMoney<span class="token punctuation">(</span>payment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">//</span>从客户的钱包中减去相应的金额
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span><span class="token string">&quot;交易产生：送奶工从钱包中成功拿走&quot;</span> <span class="token operator">+</span> payment <span class="token operator">+</span> <span class="token string">&quot;元&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>驱动</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">Driver</span> <span class="token punctuation">{</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">//</span>先构造钱包类
+        Wallet wallet <span class="token operator">=</span> new Wallet<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>在构造客户类
+        Customer customer <span class="token operator">=</span> new Customer<span class="token punctuation">(</span><span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span> wallet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>构构造送奶工
+        MilkMan milkMan <span class="token operator">=</span> new MilkMan<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>模拟送奶工和客户之间的交易
+        milkMan<span class="token punctuation">.</span>makeDeal<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> customer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="问题"><a href="#问题" class="header-anchor">#</a> 问题</h3> <ol><li><p>送奶工直接从钱包里面拿钱</p></li> <li><p>客户无法控制拿钱的多少</p></li> <li><p>直接暴露了客户有一个钱包</p></li> <li><p>当钱包的实现发生了变化，送奶工的函数也需要发生变化</p></li></ol> <h3 id="解决办法"><a href="#解决办法" class="header-anchor">#</a> 解决办法</h3> <ol><li>重写“客户”和“送奶工”两个类</li></ol> <p><strong>new客户</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">Customer2</span> <span class="token punctuation">{</span>
+    private String name<span class="token punctuation">;</span><span class="token operator">//</span>客户姓名
+    private Wallet wallet<span class="token punctuation">;</span><span class="token operator">//</span>客户的钱包
+ 
+    public Customer2<span class="token punctuation">(</span>String name<span class="token punctuation">,</span> test<span class="token punctuation">.</span>Wallet wallet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        this<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        wallet <span class="token operator">=</span> wallet<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> 由送奶工获取顾客的钱包变成顾客自己使用钱包支付费用
+     <span class="token operator">*</span>
+     <span class="token operator">*</span> @param bill 顾客支付的费用
+     <span class="token operator">*</span> @<span class="token keyword">return</span> 支付的费用
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public <span class="token builtin">float</span> getPayment<span class="token punctuation">(</span><span class="token builtin">float</span> bill<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>wallet <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>wallet<span class="token punctuation">.</span>getTotalMoney<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> bill<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                wallet<span class="token punctuation">.</span>subtractMoney<span class="token punctuation">(</span>bill<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> bill<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    public test<span class="token punctuation">.</span>Wallet getWallet<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> wallet<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>new送奶工</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">MilkMan2</span> <span class="token punctuation">{</span>
+ 
+    <span class="token operator">/</span><span class="token operator">**</span>
+     <span class="token operator">*</span> 送奶工执行“交易
+     <span class="token operator">*</span>
+     <span class="token operator">*</span> @param payment  送奶工应收取的费用
+     <span class="token operator">*</span> @param customer 被收取费用的客户对象
+     <span class="token operator">*</span><span class="token operator">/</span>
+    public void makeDeal<span class="token punctuation">(</span><span class="token builtin">float</span> payment<span class="token punctuation">,</span> Customer2 customer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">//</span>此处不再获取顾客的钱包，而是要求顾客自己支付费用
+        <span class="token builtin">float</span> customerPayment <span class="token operator">=</span> customer<span class="token punctuation">.</span>getPayment<span class="token punctuation">(</span>payment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span><span class="token string">&quot;感谢您的订购！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>new驱动</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>package test<span class="token punctuation">;</span>
+ 
+public <span class="token keyword">class</span> <span class="token class-name">Driver</span> <span class="token punctuation">{</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">//</span>先构造钱包类
+        Wallet wallet <span class="token operator">=</span> new Wallet<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>在构造客户类
+        Customer2 customer <span class="token operator">=</span> new Customer2<span class="token punctuation">(</span><span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span> wallet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>构构造送奶工
+        MilkMan2 milkMan2 <span class="token operator">=</span> new MilkMan2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">//</span>模拟送奶工和客户之间的交易
+        milkMan2<span class="token punctuation">.</span>makeDeal<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> customer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="为什么变好了"><a href="#为什么变好了" class="header-anchor">#</a> 为什么变好了？</h3> <ol><li><p>送奶工没有直接从客户手里拿钱，而是客户主动发起付款。</p></li> <li><p>客户的Wallet类可以随时改变，但是送奶工的类不需要改变。</p></li> <li><p>客户给送奶工仅暴露getPayment()函数，而不暴露付款当中“拿出钱包”，“检查钱包里的钱够不够”，“取钱”等动作。</p></li></ol> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>方法不能乱调用，必须调用下面类型的方法才满足“迪米特法则”：</p> <ol><li><p>当前对象的其他方法，即同一个类中的其他方法。</p></li> <li><p>传递进来的参数对象的方法。</p></li> <li><p>在方法中自己实例化的任何对象的方法。</p></li> <li><p>当前对象内部的组件的方法，即当前对象定义的属性对象的方法。</p></li></ol> <p><br><br><br><br> <!----></p></div></div> <!----> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="标签">#设计模式</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/eca7cb/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">单一职责原则</div></a> <a href="/pages/1f7bb4/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">接口隔离原则</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/eca7cb/" class="prev">单一职责原则</a></span> <span class="next"><a href="/pages/1f7bb4/">接口隔离原则</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:dingyuqi2023@gmail.com" title="e-mail" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/dingyuqi" title="github" target="_blank" class="iconfont icon-github"></a><a href="https://blog.csdn.net/weixin_42236936?type=blog" title="csdn" target="_blank" class="iconfont icon-csdn"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>@dingyuqi</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d18bff1c.js" defer></script><script src="/assets/js/2.6b12cf41.js" defer></script><script src="/assets/js/28.b1eacfe1.js" defer></script>
+  </body>
+</html>
